@@ -1,0 +1,241 @@
+/* Styling for image */
+.img {
+    margin-top: 1%;
+    /* Margin from top */
+    margin-left: 10%;
+    /* Margin from left */
+    width: 25%;
+    /* Width of the image */
+}
+
+/* Styling for title */
+.title {
+    margin-left: 0%;
+    /* Margin from left */
+    margin-top: 2%;
+    /* Margin from top */
+}
+
+/* Styling for container */
+.container {
+    margin-top: 2%;
+    /* Margin from top */
+}
+
+/* Styling for table */
+.table {
+    margin-top: 50%;
+    /* Margin from top */
+    width: 80%;
+    /* Width of the table */
+    margin: auto;
+    /* Center align horizontally */
+}
+
+/* Styling for main buttons */
+.buttonmain {
+    color: black;
+    /* Text color */
+}
+
+/* Styling for rows */
+.row {
+    display: flex;
+    /* Flex display */
+    justify-content: space-between;
+    /* Space between items */
+    padding: 10px 0;
+    /* Padding */
+    border-bottom: 1px solid #ddd;
+    /* Bottom border */
+}
+
+/* Styling for columns */
+.col {
+    width: 25%;
+    /* Width of each column */
+    text-align: left;
+    /* Text alignment */
+    border-right: 1px solid #ddd;
+    /* Right border */
+}
+
+/* Styling for cards */
+.card {
+    border-radius: 10px;
+    /* Border radius */
+}
+
+/* Styling for last column */
+.col:last-child {
+    border-right: none;
+    /* Remove right border */
+}
+
+/* Styling for dashboard links */
+.dashboard-link {
+    font-family: Arial, sans-serif;
+    /* Font family */
+    font-size: 16px;
+    /* Font size */
+}
+
+/* Styling for dashboard links - anchor */
+.dashboard-link a {
+    color: blue;
+    /* Link color */
+    text-decoration: underline;
+    /* Underline */
+}
+
+/* Styling for dashboard links - arrow */
+.dashboard-link .arrow {
+    color: blue;
+    /* Arrow color */
+    margin-left: 5px;
+    /* Margin from left */
+}
+
+/* Styling for user welcome section - user icon */
+.welcome-user .user-icon {
+    margin-left: 5px;
+    /* Margin from left */
+    width: 30px;
+    /* Width of user icon */
+}
+
+/* Styling for user welcome section */
+.welcome-user {
+    font-family: Arial, sans-serif;
+    /* Font family */
+    font-size: 16px;
+    /* Font size */
+    margin-left: 70%;
+    /* Margin from left */
+}
+
+/* Styling for user welcome section - title */
+.welcome-user .title {
+    margin-left: -235%;
+    /* Negative margin from left */
+    margin-top: -10%;
+    /* Negative margin from top */
+}
+
+/* Styling for welcome user span */
+.welcome-user span {
+    color: black;
+    /* Text color */
+}
+
+/* Styling for username */
+.username {
+    color: orange;
+    /* Username color */
+}
+
+/* Styling for button plus */
+.buttonplus {
+    margin-top: -7%;
+    /* Margin from top */
+    margin-left: 85%;
+    /* Margin from left */
+    width: 40px;
+    /* Width of the button */
+    height: 40px;
+    /* Height of the button */
+    border: 1px solid black;
+    /* Border */
+    position: relative;
+    /* Position relative */
+    border-radius: 6px;
+    /* Border radius */
+    background-color: #D3D3D3;
+    /* Background color */
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
+    /* Box shadow */
+    cursor: pointer;
+    /* Cursor style */
+}
+
+/* Styling for button plus 2 */
+.buttonplus2 {
+    margin-top: 1%;
+    /* Margin from top */
+    margin-left: 85%;
+    /* Margin from left */
+    width: 40px;
+    /* Width of the button */
+    height: 40px;
+    /* Height of the button */
+    border: 1px solid black;
+    /* Border */
+    position: relative;
+    /* Position relative */
+    border-radius: 6px;
+    /* Border radius */
+    background-color: #D3D3D3;
+    /* Background color */
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
+    /* Box shadow */
+    cursor: pointer;
+    /* Cursor style */
+}
+
+/* Styling for plus symbol */
+.plus {
+    background-color: #696969;
+    /* Background color */
+    position: absolute;
+    /* Position absolute */
+    border-radius: 1px;
+    /* Border radius */
+}
+
+/* Styling for horizontal line of plus symbol */
+.horizontal {
+    width: 20px;
+    /* Width of horizontal line */
+    height: 3px;
+    /* Height of horizontal line */
+    top: 18.5px;
+    /* Position from top */
+    left: 10px;
+    /* Position from left */
+}
+
+/* Styling for vertical line of plus symbol */
+.vertical {
+    width: 3px;
+    /* Width of vertical line */
+    height: 20px;
+    /* Height of vertical line */
+    top: 10px;
+    /* Position from top */
+    left: 18.5px;
+    /* Position from left */
+}
+
+/* iPhone 12 */
+@media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .container {
+        width: auto;
+    }
+
+    .table {
+        width: auto;
+        padding: auto;
+    }
+}
+
+/* iPad Pro */
+@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .container {
+        width: auto;
+    }
+
+    .table {
+        width: auto;
+        padding: auto;
+    }
+}

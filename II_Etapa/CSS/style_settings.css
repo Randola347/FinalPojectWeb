@@ -1,0 +1,117 @@
+/* Styling for image */
+.img {
+    margin-top: 1%; /* Margin from top */
+    margin-left: 10%; /* Margin from left */
+    width: 25%; /* Width of the image */
+}
+
+/* Styling for title */
+.title {
+    margin-left: 0%; /* Margin from left */
+    margin-top: 2%; /* Margin from top */
+}
+
+/* Styling for container */
+.container {
+    margin-top: 2%; /* Margin from top */
+}
+
+/* Styling for main buttons */
+.buttonmain {
+    color: black; /* Text color */
+}
+
+/* Styling for dashboard links */
+.dashboard-link {
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+}
+
+/* Styling for dashboard links - anchor */
+.dashboard-link a {
+    color: blue; /* Link color */
+    text-decoration: underline; /* Underline */
+}
+
+/* Styling for dashboard links - arrow */
+.dashboard-link .arrow {
+    width: 50px; /* Width of the arrow */
+    color: rgb(0, 0, 0); /* Arrow color */
+    margin-left: 5px; /* Margin from left */
+}
+
+/* Styling for user welcome section - user icon */
+.welcome-user .user-icon {
+    margin-left: 5px; /* Margin from left */
+    width: 30px; /* Width of user icon */
+}
+
+/* Styling for user welcome section */
+.welcome-user {
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    margin-left: 70%; /* Margin from left */
+}
+
+/* Styling for user welcome section - title */
+.welcome-user .title {
+    margin-left: -235%; /* Negative margin from left */
+    margin-top: -10%; /* Negative margin from top */
+}
+
+/* Styling for welcome user span */
+.welcome-user span {
+    color: black; /* Text color */
+}
+
+/* Styling for username */
+.username {
+    color: orange; /* Username color */
+}
+
+/* Styling for information section */
+.info {
+    margin-top: 5%; /* Margin from top */
+    margin-left: 11%; /* Margin from left */
+}
+
+/* Styling for form labels inside information section */
+.info .form-label:nth-child(3) {
+    margin-top: 20px; /* Margin from top */
+}
+
+.info .form-label:nth-child(5) {
+    margin-top: 20px; /* Margin from top */
+}
+
+/* Styling for about me section */
+.about-me {
+    width: 100%; /* Width */
+    max-width: 600px; /* Maximum width */
+    margin: 0 auto; /* Center align horizontally */
+}
+
+/* Styling for about me textarea */
+.about-me textarea {
+    width: 100%; /* Width */
+    height: 200px; /* Height */
+    margin-bottom: 20px; /* Margin from bottom */
+    resize: none; /* Disable resizing */
+    border-color: black; /* Border color */
+    margin-left: -4%; /* Negative margin from left */
+}
+
+/* Styling for buttons inside about me section */
+.about-me .buttons {
+    display: flex; /* Flex display */
+    justify-content: space-between; /* Space between items */
+}
+
+/* Styling for save button inside about me section */
+.about-me .save {
+    background-color: green; /* Background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor style */
+}
