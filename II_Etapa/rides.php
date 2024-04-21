@@ -20,7 +20,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                             <a href="dashboard.php" class="buttonmain">Dashboard</a>
                         </div>
                         <div class="col">
-                            <a href="rides.php" class="buttonmain">Rides</a>
+                            <a href="add.php" class="buttonmain">Rides</a>
                         </div>
                         <div class="col">
                             <a href="settings.php" class="buttonmain">Settings</a>
@@ -39,7 +39,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                     <a href="dashboard.php">Dashboard</a>
                     <span class="arrow">></span>
                     <a href="rides.php">Rides</a>
-                    <span href="add.php" class="arrow">> Add</span>
+                    <span href="add.php" class="arrow">> Edit</span>
                 </div>
                 <!-- Information section -->
                 <div class="info">

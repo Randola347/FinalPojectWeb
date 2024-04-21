@@ -1,5 +1,5 @@
 /* Styling for buttons */
-.btn {
+.btnprincipal {
     margin-left: 75%;
     /* Margin from left */
     margin-top: 6%;
@@ -132,9 +132,6 @@
         width: auto;
     }
 
-    .btn {
-        width: auto;
-    }
 }
 
 /* iPad Pro */
@@ -152,10 +149,6 @@
     }
 
     .table {
-        width: auto;
-    }
-
-    .btn {
         width: auto;
     }
 }

@@ -11,19 +11,19 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
             <!-- Column with a width of 8 for medium-sized screens -->
             <div class="col-md-8">
                 <!-- Logo image -->
-                <img src="logo.png" class="img" alt="Fines Ilustrativos">
+                <img src="../Image/logo.png" class="img" alt="Fines Ilustrativos">
                 <!-- Card container -->
                 <div class="card">
                     <!-- Row for navigation links -->
                     <div class="row align-items-start ml-1">
                         <div class="col">
-                            <a href="dashboard.html" class="buttonmain">Dashboard</a>
+                            <a href="dashboard.php" class="buttonmain">Dashboard</a>
                         </div>
                         <div class="col">
-                            <a href="rides.html" class="buttonmain">Rides</a>
+                            <a href="add.php" class="buttonmain">Rides</a>
                         </div>
                         <div class="col">
-                            <a href="settings.html" class="buttonmain">Settings</a>
+                            <a href="settings.php" class="buttonmain">Settings</a>
                         </div>
                     </div>
                 </div>

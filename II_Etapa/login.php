@@ -34,7 +34,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                                 <p class="pUser"> No tiene Usuario? <a href="register.php">Registrese Aquí</a></p>
 
                                 <!-- Button to submit login -->
-                                <a href="dashboard.php" class="btn btn-primary btn-block">Iniciar Sesión</a>
+                                <a href="dashboard.php" class="btn btn-primary">Iniciar Sesión</a>
                             </div>
                         </form>
                     </div>
