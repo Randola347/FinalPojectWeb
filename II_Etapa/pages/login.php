@@ -1,11 +1,11 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/actions/login_action.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/login_action.php');
 ?>
 
 <body>
     <!-- Background image container -->
-    <img src="Image/fondo_login.jpg" class="background-image" alt="Fines Ilustrativos">
+    <img src="../Image/fondo_login.jpg" class="background-image" alt="Fines Ilustrativos">
     <!-- Container for page content -->
     <div class="container">
         <!-- Row for content, justified to the left -->
@@ -17,7 +17,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/actions/login_action.php');
                     <!-- Card body -->
                     <div class="card-body">
                         <!-- Logo image -->
-                        <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
+                        <img src="../Image/logo.png" class="img" alt="Fines Ilustrativos">
 
                         <!-- Login form -->
                         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

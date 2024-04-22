@@ -1,5 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
 ?>
 
 <body>
@@ -49,7 +50,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
                         <!-- Body of the card -->
                         <p class="title">Your current list of Rides</p>
                         <!-- Title for the list of rides -->
-                        <div class="buttonplus" onclick="location.href='add.php'">
+                        <div class="buttonplus" onclick="location.href='../pages/add.php'">
                             <!-- Button to add a new ride -->
                             <div class="plus horizontal"></div>
                             <div class="plus vertical"></div>
@@ -70,54 +71,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
                                     Actions
                                 </div>
                             </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    Brete
-                                </div>
-                                <div class="col">
-                                    Barrio Los Angeles
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    <a href="rides.php" class="button">Edit -</a>
-                                    <a href="" class="button">Delete</a>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    Casa
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    Los Angeles
-                                </div>
-                                <div class="col">
-                                    <a href="rides.php" class="button">Edit -</a>
-                                    <a href="" class="button">Delete</a>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    Of cina Chepe
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    San Pedro
-                                </div>
-                                <div class="col">
-                                    <a href="rides.php" class="button">Edit -</a>
-                                    <a href="" class="button">Delete</a>
-                                </div>
-                            </div>
+                            <?php
+                            // Aquí incluye el código PHP para imprimir los rides en la tabla
+                            // Asegúrate de tener la lógica para obtener los rides del usuario en el archivo dashboard_action.php
+                            // y de almacenar los datos en un array $rides
+                            foreach ($rides as $ride) {
+                                echo "<div class='row align-items-start ml-3'>";
+                                echo "<div class='col'>" . $ride['ride_name'] . "</div>";
+                                echo "<div class='col'>" . $ride['start_from'] . "</div>";
+                                echo "<div class='col'>" . $ride['end_to'] . "</div>";
+                                echo "<div class='col'>";
+                                echo "<a href='edit.php?id=" . $ride['id'] . "' class='button'>Edit -</a>";;
+                                echo "<a href='' class='button'>Delete</a>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                            ?>
                         </div>
                     </div>
-                    <div class="buttonplus2" onclick="location.href='add.php'">
+                    <div class="buttonplus2" onclick="location.href='../pages/add.php'">
                         <!-- Button to add a new ride (similar to the previous one) -->
                         <div class="plus horizontal"></div>
                         <div class="plus vertical"></div>

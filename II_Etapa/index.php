@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
                     <!-- Card body -->
                     <div class="card-body">
                         <!-- Link to login page -->
-                        <a href="login.php" class="btn">Login</a>
+                        <a href="../pages/login.php" class="btn">Login</a>
                         <!-- Logo image -->
                         <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
                         <!-- Title -->
