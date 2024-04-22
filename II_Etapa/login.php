@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/actions/login_action.php');
 ?>
-
 
 <body>
     <!-- Background image container -->
@@ -20,21 +21,28 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                         <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
 
                         <!-- Login form -->
-                        <form>
+                        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div>
                                 <!-- Username input -->
                                 <label for="fromLocation" class="form-label">Nombre de Usuario</label>
-                                <input type="text" class="form-control" id="fromLocation" placeholder="Usuario">
+                                <input type="text" class="form-control" id="fromLocation" name="username" placeholder="Usuario">
 
                                 <!-- Password input -->
                                 <label class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña">
+                                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+
+                                <!-- Error message -->
+                                <?php if(isset($_SESSION['error'])) { ?>
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    <?php echo $_SESSION['error']; ?>
+                                </div>
+                                <?php unset($_SESSION['error']); } ?>
 
                                 <!-- Link to registration page -->
-                                <p class="pUser"> No tiene Usuario? <a href="register.php">Registrese Aquí</a></p>
+                                <p class="pUser"> ¿No tiene cuenta? <a href="register.php">Regístrese aquí</a></p>
 
                                 <!-- Button to submit login -->
-                                <a href="dashboard.php" class="btn btn-primary">Iniciar Sesión</a>
+                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </div>
                         </form>
                     </div>
