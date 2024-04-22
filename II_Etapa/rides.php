@@ -68,7 +68,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                                 <label for="arrival" class="form-label">Hora Estimada de Llegada</label>
                                 <input type="time" class="form-control" id="arrival" value="08:30">
                                 <!-- Link to cancel -->
-                                <a class="cancel" href="dashboard.html">Cancelar</a>
+                                <a class="cancel" href="dashboard.php">Cancelar</a>
                             </div>
                             <!-- Column for selecting days -->
                             <div class="col">

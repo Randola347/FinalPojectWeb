@@ -1,7 +1,6 @@
 <?php
-session_start();
-require_once($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/actions/login_action.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/actions/login_action.php');
 ?>
 
 <body>
@@ -32,11 +31,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/actions/login_action.php');
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña">
 
                                 <!-- Error message -->
-                                <?php if(isset($_SESSION['error'])) { ?>
-                                <div class="alert alert-danger mt-3" role="alert">
-                                    <?php echo $_SESSION['error']; ?>
-                                </div>
-                                <?php unset($_SESSION['error']); } ?>
+                                <?php if (isset($_SESSION['error'])) { ?>
+                                    <div class="alert alert-danger mt-3" role="alert">
+                                        <?php echo $_SESSION['error']; ?>
+                                    </div>
+                                <?php unset($_SESSION['error']);
+                                } ?>
 
                                 <!-- Link to registration page -->
                                 <p class="pUser"> ¿No tiene cuenta? <a href="register.php">Regístrese aquí</a></p>
