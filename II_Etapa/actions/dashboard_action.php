@@ -21,4 +21,26 @@ while ($row = $result->fetch_assoc()) {
     $rides[] = $row;
 }
 
+// Verificar si se ha enviado un ID de viaje para eliminar
+if (isset($_GET['delete_id'])) {
+    $delete_id = $_GET['delete_id'];
 
+    // Eliminar el viaje de la base de datos
+    $sql = "DELETE FROM rides WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $delete_id);
+    $stmt->execute();
+
+    // Verificar si la eliminación fue exitosa y mostrar un mensaje al usuario
+    if ($stmt->affected_rows > 0) {
+        $message = "¡El viaje se eliminó correctamente!";
+        $success = true;
+    } else {
+        $message = "¡No se pudo eliminar el viaje!";
+        $success = false;
+    }
+
+    // Redireccionar de vuelta a dashboard.php después de la eliminación
+    header("Location: dashboard.php");
+    exit();
+}

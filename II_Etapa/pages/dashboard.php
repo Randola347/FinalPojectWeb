@@ -55,6 +55,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
                             <div class="plus horizontal"></div>
                             <div class="plus vertical"></div>
                         </div>
+                        <?php if (isset($message)) : ?>
+                            <div class="alert <?php echo isset($success) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
+                                <?php echo $message; ?>
+                            </div>
+                        <?php endif; ?>
                         <!-- Table displaying ride information -->
                         <div class="table">
                             <div class="row align-items-start ml-3">
@@ -72,9 +77,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
                                 </div>
                             </div>
                             <?php
-                            // Aquí incluye el código PHP para imprimir los rides en la tabla
-                            // Asegúrate de tener la lógica para obtener los rides del usuario en el archivo dashboard_action.php
-                            // y de almacenar los datos en un array $rides
                             foreach ($rides as $ride) {
                                 echo "<div class='row align-items-start ml-3'>";
                                 echo "<div class='col'>" . $ride['ride_name'] . "</div>";
@@ -82,7 +84,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
                                 echo "<div class='col'>" . $ride['end_to'] . "</div>";
                                 echo "<div class='col'>";
                                 echo "<a href='edit.php?id=" . $ride['id'] . "' class='button'>Edit -</a>";;
-                                echo "<a href='' class='button'>Delete</a>";
+                                echo "<a href='?delete_id=" . $ride['id'] . "' class='button'>Delete</a>";;
                                 echo "</div>";
                                 echo "</div>";
                             }
