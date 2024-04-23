@@ -1,5 +1,11 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Si no hay una sesión iniciada o el nombre de usuario no está disponible, muestra un valor predeterminado
+    $username = "no carga";
+}
 ?>
 
 <body>
@@ -10,7 +16,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
             <!-- Column with a width of 8 for medium-sized screens -->
             <div class="col-md-8">
                 <!-- Logo image -->
-                <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
+                <img src="../Image/logo.png" class="img" alt="Fines Ilustrativos">
                 <!-- Card container -->
                 <div class="card">
                     <!-- Row for navigation links -->
@@ -29,8 +35,8 @@ require($_SERVER['DOCUMENT_ROOT'].'/shared/header.php');
                 <!-- Welcome message with user's name -->
                 <div class="welcome-user">
                     <span>Welcome</span>
-                    <a class="username">barroyo</a>
-                    <img src="Image/user.png" alt="User Icon" class="user-icon">
+                    <a class="username"><?php echo $username; ?></a>
+                    <img src="../Image/user.png" alt="User Icon" class="user-icon">
                     <h2 class="title">Dashboard</h2>
                 </div>
                 <!-- Breadcrumb links -->

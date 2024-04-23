@@ -1,6 +1,14 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Si no hay una sesión iniciada o el nombre de usuario no está disponible, muestra un valor predeterminado
+    $username = "no carga";
+}
+
 ?>
 
 <body>
@@ -31,7 +39,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
                 <div class="welcome-user">
                     <!-- Welcome message with user's name -->
                     <span>Welcome</span>
-                    <a class="username">barroyo</a>
+                    <a class="username"><?php echo $username; ?></a>
                     <img src="../Image/user.png" alt="User Icon" class="user-icon">
                     <h2 class="title">Dashboard</h2>
                 </div>
@@ -102,6 +110,5 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/dashboard_action.php');
     </div>
     </div>
 </body>
-
 
 </html>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Consulta para obtener los datos del usuario
-    $sql = "SELECT id, password FROM users WHERE username = ?";
+    $sql = "SELECT id, username, password FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             // Las credenciales son válidas, inicia sesión y redirige al dashboard
             $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username']; // Almacena el nombre de usuario en la sesión
             header("Location: dashboard.php");
             exit();
         } else {
@@ -43,5 +44,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
-
-

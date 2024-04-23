@@ -1,6 +1,5 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '../db/db.php');
-
 // Variable para almacenar los mensajes
 $message = "";
 
@@ -19,16 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verificar si todos los campos obligatorios están completos
         if (empty($name) || empty($lastname) || empty($phone) || empty($username) || empty($password) || empty($confirm_password)) {
-            $message = "Por favor complete todos los campos.";
+            $message = "<span style='color: red;'>Por favor complete todos los campos.</span>";
         } elseif ($password != $confirm_password) {
-            $message = "Las contraseñas no coinciden.";
+            $message = "<span style='color: red;'>Las contraseñas no coinciden.</span>";
         } else {
             // Verificar si el nombre de usuario o el número de teléfono ya existen en la base de datos
             $query = "SELECT * FROM users WHERE username = '$username' OR phone = '$phone'";
             $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) > 0) {
-                $message = "Ya existe un usuario con el mismo nombre de usuario o número de teléfono.";
+                $message = "<span style='color: red;'>Ya existe un usuario con el mismo nombre de usuario o número de teléfono.</span>";
             } else {
                 // Cifrar la contraseña
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -39,17 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if (mysqli_query($conn, $query)) {
                     // Usuario registrado exitosamente
-                    $message = "Usuario registrado exitosamente.";
+                    $message = "<span style='color: green;'>Usuario registrado exitosamente.</span>";
                     // Redirigir al usuario al login.php
                     header("Location: login.php");
                     exit(); // Asegúrate de salir después de redirigir para evitar que el script continúe ejecutándose
                 } else {
-                    $message = "Error al registrar el usuario: " . mysqli_error($conn);
+                    $message = "<span style='color: red;'>Error al registrar el usuario: " . mysqli_error($conn) . "</span>";
                 }
             }
         }
     } else {
-        $message = "Error: Confirmación de contraseña no recibida.";
+        $message = "<span style='color: red;'>Error: Confirmación de contraseña no recibida.</span>";
     }
 }
 ?>

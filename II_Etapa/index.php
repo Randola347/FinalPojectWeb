@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
 ?>
 
 <body>
@@ -53,64 +54,34 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
                                     <!-- Empty column for actions -->
                                 </div>
                             </div>
-                            <!-- Sample ride entry -->
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    barroyo
-                                </div>
-                                <div class="col">
-                                    Barrio Los Angeles
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    <!-- Button to view ride details -->
-                                    <a href="" class="button">View</a>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    barroyo
-                                </div>
-                                <div class="col">
-                                    Barrio Los Angeles
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    <a href="" class="button">View</a>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    barroyo
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    Los Angeles
-                                </div>
-                                <div class="col">
-                                    <a href="" class="button">View</a>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ml-3">
-                                <div class="col">
-                                    yluna
-                                </div>
-                                <div class="col">
-                                    Ciudad Quesada
-                                </div>
-                                <div class="col">
-                                    San Pedro
-                                </div>
-                                <div class="col">
-                                    <a href="" class="button">View</a>
-                                </div>
-                            </div>
+                            <!-- PHP code to display rides -->
+                            <?php
+                            // Consulta para obtener todos los viajes
+                            $sql = "SELECT rides.*, users.username 
+                            FROM rides 
+                            JOIN users ON rides.user_id = users.id
+                            ";
+                            $result = $conn->query($sql);
+
+                            // Verificar si hay resultados
+                            if ($result->num_rows > 0) {
+                                // Mostrar los viajes en la tabla
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<div class='row align-items-start ml-3'>";
+                                    echo "<div class='col'>" . $row['username'] . "</div>";
+                                    echo "<div class='col'>" . $row['start_from'] . "</div>";
+                                    echo "<div class='col'>" . $row['end_to'] . "</div>";
+                                    echo "<div class='col'>";
+                                    echo "<a href='../pages/view_ride.php?id=" . $row['id'] . "' class='button'>View</a>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                }
+                            } else {
+                                // Si no hay viajes, mostrar un mensaje de que no hay resultados
+                                echo "No hay resultados de viajes.";
+                            }
+                            ?>
+                            <!-- Fin del código PHP -->
                         </div>
                     </div>
                 </div>
@@ -118,4 +89,5 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
         </div>
     </div>
 </body>
+
 </html>

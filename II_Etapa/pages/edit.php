@@ -1,6 +1,12 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
 require($_SERVER['DOCUMENT_ROOT'] . '../actions/edit.php');
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Si no hay una sesión iniciada o el nombre de usuario no está disponible, muestra un valor predeterminado
+    $username = "no carga";
+}
 ?>
 
 <body>
@@ -30,7 +36,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '../actions/edit.php');
                 <!-- Welcome message with user's name -->
                 <div class="welcome-user">
                     <span>Welcome</span>
-                    <a class="username">barroyo</a>
+                    <a class="username"><?php echo $username; ?></a>
                     <img src="../Image/user.png" alt="User Icon" class="user-icon">
                     <h2 class="title">Dashboard</h2>
                 </div>
