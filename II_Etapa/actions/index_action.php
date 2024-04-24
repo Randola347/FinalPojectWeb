@@ -15,3 +15,4 @@ $sql = "SELECT rides.*, users.username
             FROM rides 
             JOIN users ON rides.user_id = users.id";
 $result = $conn->query($sql);
+
