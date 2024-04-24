@@ -63,7 +63,7 @@ if (isset($_GET['id'])) {
                                     <!-- Column for selecting days -->
                                     <div class="col">
                                         <!-- Label for day selection -->
-                                        <label for="days" class="form-label">Seleccione los Dias</label>
+                                        <label for="days" class="form-label">Dias</label>
                                         <!-- Mostrar los días del viaje -->
                                         <div id="days">
                                             <?php

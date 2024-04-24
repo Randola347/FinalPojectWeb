@@ -1,6 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
 require($_SERVER['DOCUMENT_ROOT'] . '../actions/add_action.php');
+
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {

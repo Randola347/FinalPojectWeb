@@ -1,5 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '../db/db.php');
+
+
 // Variable para almacenar los mensajes
 $message = "";
 
@@ -39,6 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_query($conn, $query)) {
                     // Usuario registrado exitosamente
                     $message = "<span style='color: green;'>Usuario registrado exitosamente.</span>";
+
+                    // Obtener el ID del usuario recién insertado
+                    $user_id = mysqli_insert_id($conn);
+
+                    // Insertar registro vacío en la tabla user_data con el user_id del usuario recién creado
+                    $query_user_data = "INSERT INTO user_data (full_name, average_speed, about_me, user_id) VALUES ('', '', '', $user_id)";
+
+                    mysqli_query($conn, $query_user_data);
+
                     // Redirigir al usuario al login.php
                     header("Location: login.php");
                     exit(); // Asegúrate de salir después de redirigir para evitar que el script continúe ejecutándose
@@ -51,4 +62,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "<span style='color: red;'>Error: Confirmación de contraseña no recibida.</span>";
     }
 }
-?>

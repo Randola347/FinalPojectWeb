@@ -1,6 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/shared/header.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/index_action.php');
+
 ?>
 
 <body>
@@ -14,7 +15,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
                 <div class="card">
                     <!-- Card body -->
                     <div class="card-body">
-                        <!-- Link to login page -->
                         <a href="../pages/login.php" class="btn">Login</a>
                         <!-- Logo image -->
                         <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
@@ -22,21 +22,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
                         <h5 class="title">Welcome to TicoRides.com</h5>
                         <!-- Title for search section -->
                         <p class="title">Search for a Ride</p>
-                        <!-- Box containing search form -->
-                        <div class="box">
-                            <!-- Text for "Form" -->
-                            <span>Form</span>
-                            <!-- Input field for "From" location -->
-                            <input type="text" class="input-text" value="Input Text" onfocus="this.value=''">
-                            <!-- Text for "To" -->
-                            <span>To</span>
-                            <!-- Input field for "To" location -->
-                            <input type="text" class="input-text" value="Input Text" onfocus="this.value=''">
-                            <!-- Button to find rides -->
-                            <button class="my-button">Find my Ride!</button>
-                        </div>
+                        <!-- Form for search -->
+                        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                            <!-- Box containing search form -->
+                            <div class="box">
+                                <!-- Text for "Form" -->
+                                <span>Form</span>
+                                <!-- Input field for "From" location -->
+                                <input type="text" name="from" class="input-text" placeholder="From" required>
+                                <!-- Text for "To" -->
+                                <span>To</span>
+                                <!-- Input field for "To" location -->
+                                <input type="text" name="to" class="input-text" placeholder="To" required>
+                                <!-- Button to find rides -->
+                                <button type="submit" class="my-button">Find my Ride!</button>
+                            </div>
+                        </form>
                         <!-- Title for results section -->
-                        <p class="title">Results for Rides that matches your criteria:</p>
+                        <p class="title">Results for Rides that match your criteria:</p>
                         <!-- Table displaying ride results -->
                         <div class="table">
                             <!-- Table row with column headings -->
@@ -56,32 +59,31 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
                             </div>
                             <!-- PHP code to display rides -->
                             <?php
-                            // Consulta para obtener todos los viajes
-                            $sql = "SELECT rides.*, users.username 
-                            FROM rides 
-                            JOIN users ON rides.user_id = users.id
-                            ";
-                            $result = $conn->query($sql);
+                            // Si se ha enviado el formulario, los resultados se mostrarán después de la búsqueda
+                            // De lo contrario, se mostrarán todos los viajes disponibles
+                            if ($_SERVER["REQUEST_METHOD"] != "POST") {
+                                $sql = "SELECT rides.*, users.username 
+                                        FROM rides 
+                                        JOIN users ON rides.user_id = users.id";
+                                $result = $conn->query($sql);
 
-                            // Verificar si hay resultados
-                            if ($result->num_rows > 0) {
-                                // Mostrar los viajes en la tabla
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<div class='row align-items-start ml-3'>";
-                                    echo "<div class='col'>" . $row['username'] . "</div>";
-                                    echo "<div class='col'>" . $row['start_from'] . "</div>";
-                                    echo "<div class='col'>" . $row['end_to'] . "</div>";
-                                    echo "<div class='col'>";
-                                    echo "<a href='../pages/view_ride.php?id=" . $row['id'] . "' class='button'>View</a>";
-                                    echo "</div>";
-                                    echo "</div>";
+                                if ($result->num_rows > 0) {
+                                    // Mostrar los viajes en la tabla
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<div class='row align-items-start ml-3'>";
+                                        echo "<div class='col'>" . $row['username'] . "</div>";
+                                        echo "<div class='col'>" . $row['start_from'] . "</div>";
+                                        echo "<div class='col'>" . $row['end_to'] . "</div>";
+                                        echo "<div class='col'>";
+                                        echo "<a href='../pages/view_ride.php?id=" . $row['id'] . "' class='button'>View</a>";
+                                        echo "</div>";
+                                        echo "</div>";
+                                    }
+                                } else {
+                                    echo "No hay resultados de viajes.";
                                 }
-                            } else {
-                                // Si no hay viajes, mostrar un mensaje de que no hay resultados
-                                echo "No hay resultados de viajes.";
                             }
                             ?>
-                            <!-- Fin del código PHP -->
                         </div>
                     </div>
                 </div>
