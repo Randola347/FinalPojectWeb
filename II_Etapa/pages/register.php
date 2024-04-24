@@ -1,5 +1,5 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php'); ?>
-<?php require($_SERVER['DOCUMENT_ROOT'] . '../actions/register_user.php'); ?>
+<?php require($_SERVER['DOCUMENT_ROOT'] . '../actions/register_user_action.php'); ?>
 
 <body>
     <!-- Background image container -->
@@ -50,7 +50,7 @@
                                 <p class="pUser"> Ya tiene Usuario? <a href="login.php">Iniciar Sesión</a></p>
 
                                 <!-- Button to submit registration -->
-                                <button type="submit" class="btn btn-primary btn-block">Registrese</button>
+                                <button type="submit" class="btn btn-primary">Registrese</button>
                             </div>
                         </form>
                     </div>

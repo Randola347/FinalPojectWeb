@@ -1,12 +1,13 @@
 <?php
+// Include necessary files
 require($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
 require($_SERVER['DOCUMENT_ROOT'] . '../actions/settings_actions.php');
 
-
+// Check if a user session is set
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
-    // Si no hay una sesión iniciada o el nombre de usuario no está disponible, muestra un valor predeterminado
+    // If no session is set or username is not available, display a default value
     $username = "no carga";
 }
 ?>
@@ -24,6 +25,7 @@ if (isset($_SESSION['username'])) {
                 <div class="card">
                     <!-- Row for navigation links -->
                     <div class="row align-items-start ml-1">
+                        <!-- Column for each navigation link -->
                         <div class="col">
                             <a href="dashboard.php" class="buttonmain">Dashboard</a>
                         </div>
@@ -52,18 +54,18 @@ if (isset($_SESSION['username'])) {
                     <!-- Form for updating user settings -->
                     <form method="post" action="../actions/settings_actions.php">
                         <!-- Label and input field for full name -->
-                        <label for="fullname" class="form-label">Nombre Completo</label>
-                        <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Nombre Completo" value="<?php echo htmlspecialchars($full_name); ?>">
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" value="<?php echo htmlspecialchars($full_name); ?>">
                         <!-- Label and input field for average speed -->
-                        <label for="speedAverage" class="form-label">Velocidad Media</label>
+                        <label for="speedAverage" class="form-label">Average Speed</label>
                         <input type="text" name="speedAverage" class="form-control" id="speedAverage" placeholder="km/h" value="<?php echo htmlspecialchars($average_speed); ?>">
                         <!-- Label and textarea for personal description -->
-                        <label for="aboutMe" class="form-label">Sobre mí</label>
-                        <textarea name="aboutMe" id="aboutMe" class="form-control" placeholder="Algo sobre mí va aquí"><?php echo htmlspecialchars($about_me); ?></textarea>
+                        <label for="aboutMe" class="form-label">About Me</label>
+                        <textarea name="aboutMe" id="aboutMe" class="form-control" placeholder="Something about me goes here"><?php echo htmlspecialchars($about_me); ?></textarea>
                         <!-- Buttons for cancel and save -->
                         <div class="buttons">
-                            <a href="dashboard.php" class="btn btn-secondary">Cancelar</a>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="dashboard.php" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>

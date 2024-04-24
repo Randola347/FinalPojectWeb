@@ -1,47 +1,46 @@
 <?php
-// Incluir el archivo de conexión a la base de datos y cualquier otra configuración necesaria
+// Include the database connection file and any other necessary configurations
 require_once($_SERVER['DOCUMENT_ROOT'] . '../db/db.php');
 
-// Obtener el ID del usuario de la sesión (asumiendo que ya ha iniciado sesión)
+// Get the user ID from the session (assuming the user is already logged in)
 session_start();
 $user_id = $_SESSION['user_id'];
 
-
-// Consulta para obtener los rides del usuario
+// Query to retrieve the rides of the user
 $sql = "SELECT * FROM rides WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Inicializar un array para almacenar los rides
+// Initialize an array to store the rides
 $rides = [];
 
-// Recorrer los resultados y almacenarlos en el array $rides
+// Iterate through the results and store them in the $rides array
 while ($row = $result->fetch_assoc()) {
     $rides[] = $row;
 }
 
-// Verificar si se ha enviado un ID de viaje para eliminar
+// Check if a ride ID is submitted for deletion
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
 
-    // Eliminar el viaje de la base de datos
+    // Delete the ride from the database
     $sql = "DELETE FROM rides WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $delete_id);
     $stmt->execute();
 
-    // Verificar si la eliminación fue exitosa y mostrar un mensaje al usuario
+    // Check if the deletion was successful and display a message to the user
     if ($stmt->affected_rows > 0) {
-        $message = "¡El viaje se eliminó correctamente!";
+        $message = "The ride was deleted successfully!";
         $success = true;
     } else {
-        $message = "¡No se pudo eliminar el viaje!";
+        $message = "Failed to delete the ride!";
         $success = false;
     }
 
-    // Redireccionar de vuelta a dashboard.php después de la eliminación
+    // Redirect back to dashboard.php after deletion
     header("Location: dashboard.php");
     exit();
 }

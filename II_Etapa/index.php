@@ -1,14 +1,15 @@
 <?php
+// Including necessary files
 require_once($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '../actions/index_action.php');
 
-// Si se ha enviado el formulario, los resultados se mostrarán después de la búsqueda
-// De lo contrario, se mostrarán todos los viajes disponibles
+// If the form is submitted, display the results after searching
+// Otherwise, display all available rides
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $from = $_POST['from'];
     $to = $_POST['to'];
 
-    // Consulta SQL para buscar rides que coincidan con los criterios de búsqueda
+    // SQL query to search for rides matching the search criteria
     $sql = "SELECT rides.*, users.username 
             FROM rides 
             JOIN users ON rides.user_id = users.id 
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = $conn->query($sql);
 } else {
-    // Consulta SQL para obtener todos los rides si no se ha enviado el formulario
+    // SQL query to get all rides if the form is not submitted
     $sql = "SELECT rides.*, users.username 
             FROM rides 
             JOIN users ON rides.user_id = users.id";
@@ -36,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card">
                     <!-- Card body -->
                     <div class="card-body">
-                        <a href="../pages/login.php" class="btn">Login</a>
+                        <!-- Button to login -->
+                        <a href="../pages/login.php" class="btn btn-primary">Login</a>
                         <!-- Logo image -->
-                        <img src="Image/logo.png" class="img" alt="Fines Ilustrativos">
+                        <img src="Image/logo.png" class="img" alt="Illustrative Purposes">
                         <!-- Title -->
                         <h5 class="title">Welcome to TicoRides.com</h5>
                         <!-- Title for search section -->
@@ -81,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <!-- PHP code to display rides -->
                             <?php
                             if ($result->num_rows > 0) {
-                                // Mostrar los rides
+                                // Display the rides
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<div class='row align-items-start ml-3'>";
                                     echo "<div class='col'>" . $row['username'] . "</div>";
@@ -93,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     echo "</div>";
                                 }
                             } else {
-                                echo "No hay resultados de rides.";
+                                echo "No results found for rides.";
                             }
                             ?>
                         </div>

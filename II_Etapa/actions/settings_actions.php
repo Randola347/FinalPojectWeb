@@ -4,16 +4,16 @@ require($_SERVER['DOCUMENT_ROOT'] . '../db/db.php');
 session_start();
 $user_id = $_SESSION['user_id'];
 
-// Verificar si se ha enviado el formulario
+// Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar si el usuario está autenticado
+    // Check if the user is authenticated
     if (isset($_SESSION['user_id'])) {
-        // Obtener los datos del formulario
+        // Get form data
         $full_name = $_POST['fullname'];
         $average_speed = $_POST['speedAverage'];
         $about_me = $_POST['aboutMe'];
 
-        // Verificar si ya existen datos para este usuario
+        // Check if data already exists for this user
         $stmt_select = $conn->prepare("SELECT COUNT(*) FROM user_data WHERE user_id = ?");
         $stmt_select->bind_param("i", $user_id);
         $stmt_select->execute();
@@ -22,44 +22,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_select->close();
 
         if ($count > 0) {
-            // Si existen datos, actualizarlos
+            // If data exists, update it
             $stmt_update = $conn->prepare("UPDATE user_data SET full_name = ?, average_speed = ?, about_me = ? WHERE user_id = ?");
             $stmt_update->bind_param("sssi", $full_name, $average_speed, $about_me, $user_id);
 
             if ($stmt_update->execute()) {
-                // Redirigir al usuario al dashboard después de guardar los datos
+                // Redirect user to dashboard after saving data
                 header("Location: ../pages/settings.php");
                 exit();
             } else {
-                // Mostrar un mensaje de error si no se pudieron guardar los datos
-                echo "Error al actualizar los datos en la base de datos.";
+                // Show error message if data could not be saved
+                echo "Error updating data in the database.";
             }
 
             $stmt_update->close();
         } else {
-            // Si no existen datos, insertar nuevos datos
+            // If data doesn't exist, insert new data
             $stmt_insert = $conn->prepare("INSERT INTO user_data (full_name, average_speed, about_me, user_id) VALUES (?, ?, ?, ?)");
             $stmt_insert->bind_param("sssi", $full_name, $average_speed, $about_me, $user_id);
 
             if ($stmt_insert->execute()) {
-                // Redirigir al usuario al dashboard después de guardar los datos
+                // Redirect user to dashboard after saving data
                 header("Location: ../pages/dashboard.php");
                 exit();
             } else {
-                // Mostrar un mensaje de error si no se pudieron guardar los datos
-                echo "Error al insertar los datos en la base de datos.";
+                // Show error message if data could not be saved
+                echo "Error inserting data into the database.";
             }
 
             $stmt_insert->close();
         }
     } else {
-        // Si el usuario no está autenticado, redirigirlo al login
+        // If user is not authenticated, redirect to login
         header("Location: ../pages/login.php");
         exit();
     }
 } else {
-    // Si no se ha enviado el formulario, obtener los datos del usuario
-    // Consulta SQL para obtener los datos del usuario desde la tabla user_data
+    // If form has not been submitted, get user data
+    // SQL query to retrieve user data from user_data table
     $query = "SELECT full_name, average_speed, about_me FROM user_data WHERE user_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);

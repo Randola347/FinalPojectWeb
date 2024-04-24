@@ -1,10 +1,12 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '../shared/header.php');
-require($_SERVER['DOCUMENT_ROOT'] . '../actions/edit.php');
+require($_SERVER['DOCUMENT_ROOT'] . '../actions/edit_action.php');
+
+// Check if a user session is set
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
-    // Si no hay una sesión iniciada o el nombre de usuario no está disponible, muestra un valor predeterminado
+    // If no session is set or username is not available, display a default value
     $username = "no carga";
 }
 ?>
@@ -48,47 +50,47 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <!-- Information section -->
                 <div class="info">
-                    <!-- Mostrar mensajes de éxito o error -->
+                    <!-- Show success or error messages -->
                     <?php if (isset($message)) : ?>
                         <div class="alert <?php echo isset($success) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
                             <?php echo $message; ?>
                         </div>
                     <?php endif; ?>
-                    <!-- Formulario para editar un viaje -->
+                    <!-- Form for editing a ride -->
                     <form method="POST">
-                        <!-- Label y campo de entrada para el nombre del viaje -->
-                        <label for="ridename" class="form-label">Nombre del Viaje</label>
+                        <!-- Label and input field for ride name -->
+                        <label for="ridename" class="form-label">Ride Name</label>
                         <input type="text" class="form-control" id="ridename" name="ridename" value="<?php echo $ride_name; ?>">
-                        <!-- Label y campo de entrada para el lugar de salida -->
-                        <label for="startfrom" class="form-label">Lugar de Salida</label>
+                        <!-- Label and input field for start location -->
+                        <label for="startfrom" class="form-label">Start Location</label>
                         <input type="text" class="form-control" id="startfrom" name="startfrom" value="<?php echo $start_from; ?>">
-                        <!-- Label y campo de entrada para el lugar de llegada -->
-                        <label for="endto" class="form-label">Lugar de Llegada</label>
+                        <!-- Label and input field for end location -->
+                        <label for="endto" class="form-label">End Location</label>
                         <input type="text" class="form-control" id="endto" name="endto" value="<?php echo $end_to; ?>">
-                        <!-- Label y área de texto para la descripción del viaje -->
-                        <label for="description" class="form-label">Descripción</label>
+                        <!-- Label and text area for ride description -->
+                        <label for="description" class="form-label">Description</label>
                         <textarea id="description" name="description" class="form-control"><?php echo $description; ?></textarea>
-                        <!-- Subtítulo para el horario -->
-                        <h3>Cuando</h3>
-                        <!-- Fila para los campos de horario -->
+                        <!-- Subtitle for schedule -->
+                        <h3>When</h3>
+                        <!-- Row for schedule fields -->
                         <div class="row align-items-start ml-3">
-                            <!-- Columna para la hora de salida -->
+                            <!-- Column for departure time -->
                             <div class="col">
-                                <!-- Label y campo de entrada para la hora de salida -->
-                                <label for="departure" class="form-label">Hora de Salida</label>
+                                <!-- Label and input field for departure time -->
+                                <label for="departure" class="form-label">Departure Time</label>
                                 <input type="time" class="form-control" id="departure" name="departure" value="<?php echo $departure_time; ?>">
-                                <!-- Label y campo de entrada para la hora estimada de llegada -->
-                                <label for="arrival" class="form-label">Hora Estimada de Llegada</label>
+                                <!-- Label and input field for estimated arrival time -->
+                                <label for="arrival" class="form-label">Estimated Arrival Time</label>
                                 <input type="time" class="form-control" id="arrival" name="arrival" value="<?php echo $arrival_time; ?>">
-                                <!-- Enlace para cancelar -->
-                                <a class="cancel" href="dashboard.php">Cancelar</a>
+                                <!-- Link to cancel -->
+                                <a class="cancel" href="dashboard.php">Cancel</a>
                             </div>
-                            <!-- Columna para seleccionar los días -->
+                            <!-- Column for selecting days -->
                             <div class="col">
-                                <!-- Label para la selección de días -->
-                                <label for="days" class="form-label">Seleccione los Días</label>
+                                <!-- Label for day selection -->
+                                <label for="days" class="form-label">Select Days</label>
                                 <div id="days">
-                                    <!-- Casillas de verificación para cada día -->
+                                    <!-- Checkboxes for each day -->
                                     <?php
                                     $week_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                                     foreach ($week_days as $day) {
@@ -97,8 +99,8 @@ if (isset($_SESSION['username'])) {
                                         echo "<label for='$day'>$day</label><br>";
                                     }
                                     ?>
-                                    <!-- Botón para guardar los cambios -->
-                                    <button type="submit" class="save">Guardar</button>
+                                    <!-- Button to save changes -->
+                                    <button type="submit" class="save">Save</button>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/db/db.php');
 
-// Función para limpiar los datos del formulario
+// Function to sanitize form data
 function clean_input($data)
 {
     $data = trim($data);
@@ -10,9 +10,8 @@ function clean_input($data)
     return $data;
 }
 
-// No se ha enviado el formulario de búsqueda, mostrar todos los viajes disponibles
+// If the search form has not been submitted, display all available rides
 $sql = "SELECT rides.*, users.username 
-            FROM rides 
-            JOIN users ON rides.user_id = users.id";
+        FROM rides 
+        JOIN users ON rides.user_id = users.id";
 $result = $conn->query($sql);
-
