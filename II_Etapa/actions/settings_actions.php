@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $about_me = $_POST['aboutMe'];
 
         // Check if data already exists for this user
-        $stmt_select = $conn->prepare("SELECT COUNT(*) FROM user_data WHERE user_id = ?");
+        $stmt_select = $conn->prepare("SELECT COUNT(*) FROM user_data WHERE id_user = ?");
         $stmt_select->bind_param("i", $user_id);
         $stmt_select->execute();
         $stmt_select->bind_result($count);
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($count > 0) {
             // If data exists, update it
-            $stmt_update = $conn->prepare("UPDATE user_data SET full_name = ?, average_speed = ?, about_me = ? WHERE user_id = ?");
+            $stmt_update = $conn->prepare("UPDATE user_data SET full_name = ?, average_speed = ?, about_me = ? WHERE id_user = ?");
             $stmt_update->bind_param("sssi", $full_name, $average_speed, $about_me, $user_id);
 
             if ($stmt_update->execute()) {
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     // If form has not been submitted, get user data
     // SQL query to retrieve user data from user_data table
-    $query = "SELECT full_name, average_speed, about_me FROM user_data WHERE user_id = ?";
+    $query = "SELECT full_name, average_speed, about_me FROM user_data WHERE id_user = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();

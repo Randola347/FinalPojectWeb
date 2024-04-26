@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $user_id = mysqli_insert_id($conn);
 
                     // Insert empty record in user_data table with the user_id of the newly created user
-                    $query_user_data = "INSERT INTO user_data (full_name, average_speed, about_me, user_id) VALUES ('', '', '', $user_id)";
+                    $query_user_data = "INSERT INTO user_data (full_name, average_speed, about_me, id_user) VALUES ('', '', '', $user_id)";
 
                     mysqli_query($conn, $query_user_data);
 
